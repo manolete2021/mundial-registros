@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1400px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Section */
+.header {
+    background: transparent;
+    border: 2px solid #1e1e1e;
+    border-radius: 15px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header:hover{
+    transition: scale(4.3s);
+}
+
+.welcome-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1e1e1e;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #1e1e1e;
+    opacity: 0.9;
+}
+
+/* Group Buttons */
+.group-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.group-btn {
+    background: transparent;
+    border: 2px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1e1e1e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+    min-width: 150px;
+}
+
+.group-btn:hover {
+    background: #1e1e1e;
+    color: white;
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.group-btn.active {
+    background: #1e1e1e;
+    color: white;
+    opacity: 1;
+}
+
+/* Table Section */
+.table-section {
+    border: 2px solid #1e1e1e;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.table-title {
+    font-size: 16px;
+    color: #1e1e1e;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    border-bottom: 2px solid #1e1e1e;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1e1e;
+    opacity: 0.8;
+}
+
+tbody tr {
+    border-bottom: 1px solid #1e1e1e;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #1e1e1e;
+    opacity: 0.8;
+}
+
+/* Create New Button */
+.create-new-btn {
+    background: transparent;
+    border: 2px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1e1e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.create-new-btn:hover {
+    background: #1e1e1e;
+    color: white;
+    opacity: 1;
+}
+
+/* Form Section */
+.form-section {
+    border: 2px solid #1e1e1e;
+    border-radius: 15px;
+    padding: 25px;
+    opacity: 0.8;
+}
+
+.form-title {
+    font-size: 16px;
+    color: #1e1e1e;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1e1e;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.form-field input {
+    padding: 10px;
+    border: 2px solid #1e1e1e;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.group-btn-submit {
+    background: transparent;
+    border: 2px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1e1e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.group-btn-submit:hover {
+    background: #1e1e1e;
+    color: white;
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .welcome-title {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .group-buttons {
+        flex-direction: column;
+    }
+
+    .group-btn {
+        width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+    }
+}
+
