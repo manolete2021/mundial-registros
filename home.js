@@ -33,6 +33,18 @@ const playerForm = document.getElementById('playerForm');
 // Load data when page loads
 loadData();
 
+// Load and display user name from localStorage  ### lo nuevo
+function loadUserName() {
+    const userName = localStorage.getItem('userName');
+    const userNameDisplay = document.getElementById('userNameDisplay');
+    if (userName && userNameDisplay) {
+        userNameDisplay.textContent = userName;
+    }
+}
+
+// Load user name when page loads
+loadUserName();
+
 // Set active group button
 function setActiveGroup(group) {
     groupButtons.forEach(btn => {
@@ -125,4 +137,57 @@ playerForm.addEventListener('submit', (e) => {
 // Initialize display
 setActiveGroup(currentGroup);
 displayPlayers();
+
+// Cerrar sesión function
+function cerrarSesion() {
+    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+        const token = localStorage.getItem('token');
+        
+        if (!token) {
+            // Si no hay token, limpiar y redirigir directamente
+            localStorage.removeItem('token');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+            return;
+        }
+        
+        // Llamar al servicio de cerrar sesión
+        fetch('http://localhost:5000/cerrar-sesion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: token
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Si la respuesta es 200, limpiar datos de sesión
+                localStorage.removeItem('token');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userId');
+                
+                // Redirigir a login
+                window.location.href = 'login.html';
+            } else {
+                throw new Error('Error al cerrar sesión');
+            }
+        })
+        // en caso de dane en los then
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al cerrar sesión. Se limpiarán los datos locales.');
+            // Limpiar datos de sesión incluso si hay error
+            localStorage.removeItem('token');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+        });
+    }
+}
 
